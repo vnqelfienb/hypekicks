@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dim">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        {% load static %}
+        <link href="{% static 'css/main.css' %}" rel="stylesheet">
+        <script src="{% static 'js/htmx.min.js'%}">
+            
+        </script>
+    </head>
+    <body>
+        <img src="{% static 'images/background.webp' %}" alt="" class="absolute  top-0 left-0 h-full w-full object-cover -z-10 blur-xl opacity-40">
+        <h1 class="text-3xl text-secondary">Hello from Django!</h1>
+    </body>
+</html>

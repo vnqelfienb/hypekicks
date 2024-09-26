@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dim">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    {% load static %}
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <link href="{% static 'css/akar.css' %}" rel="stylesheet">
+    <script src="{% static 'js/htmx.min.js'%}">
+
+    </script>
+    <script src="{% static 'js/alpine.min.js' %}" defer>
+
+    </script>
+</head>
+
+<body class="">
+    <img src="{% static 'images/background.webp' %}" alt=""
+        class="absolute top-0 left-0 h-full w-full object-fill -z-10 blur-2xl opacity-50">
+
+    <c-navbar></c-navbar>
+
+
+</body>
+
+</html>

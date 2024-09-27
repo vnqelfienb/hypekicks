@@ -1,10 +1,17 @@
 <div x-data="{ 
         slideOverOpen: false 
-    }" class="relative z-50 w-auto h-auto">
+    }" class="relative z-50 w-auto">
     <button @click="slideOverOpen=true"
-        class="inline-flex items-center justify-center h-10 px-4 py-2 text-sm font-medium transition-colors bg-white border rounded-md hover:bg-neutral-100 active:bg-white focus:bg-white focus:outline-none focus:ring-2 focus:ring-neutral-200/60 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none">Open</button>
+        class="btn bg-transparent text-primary text-lg border-none hover:scale-110 transition duration-300 delay-150 bg-zinc-50 bg-opacity-5 hover:bg-zinc-50 hover:bg-opacity-15 justify-self-start"><svg
+            class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+            width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
+        </svg>
+
+    </button>
     <template x-teleport="body">
-        <div x-show="slideOverOpen" @keydown.window.escape="slideOverOpen=false" class="relative z-[99]">
+        <div x-show="slideOverOpen" @keydown.window.escape="slideOverOpen=false" class="relative z-[99] bg-black">
             <div x-show="slideOverOpen" x-transition.opacity.duration.600ms @click="slideOverOpen = false"
                 class="fixed inset-0 bg-black bg-opacity-10"></div>
             <div class="fixed inset-0 overflow-hidden">
@@ -17,16 +24,17 @@
                             x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full"
                             class="w-screen max-w-md">
                             <div
-                                class="flex flex-col h-full py-5 overflow-y-scroll bg-white border-l shadow-lg border-neutral-100/70">
+                                class="flex flex-col h-full py-5 overflow-y-scroll bg-zinc-50 bg-opacity-10 rounded-md shadow-inner shadow-black">
                                 <div class="px-4 sm:px-5">
                                     <div class="flex items-start justify-between pb-1">
-                                        <h2 class="text-base font-semibold leading-6 text-gray-900"
-                                            id="slide-over-title">Slide Over Title</h2>
+                                        <h2 class="text-xl font-semibold leading-6 text-primary" id="slide-over-title">
+                                            Shopping Cart</h2>
                                         <div class="flex items-center h-auto ml-3">
                                             <button @click="slideOverOpen=false"
-                                                class="absolute top-0 right-0 z-30 flex items-center justify-center px-3 py-2 mt-4 mr-5 space-x-1 text-xs font-medium uppercase border rounded-md border-neutral-200 text-neutral-600 hover:bg-neutral-100">
+                                                class="absolute top-0 right-0 z-30 flex items-center justify-center px-3 py-2 mt-4 mr-5 space-x-1 text-xs font-medium uppercase border rounded-md border-secondary text-secondary hover:bg-secondary hover:bg-opacity-10">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                    stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                                    stroke-width="1.5" stroke="currentColor"
+                                                    class="w-4 h-4 text-secondary">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         d="M6 18L18 6M6 6l12 12"></path>
                                                 </svg>
@@ -38,7 +46,7 @@
                                 <div class="relative flex-1 px-4 mt-5 sm:px-5">
                                     <div class="absolute inset-0 px-4 sm:px-5">
                                         <div
-                                            class="relative h-full overflow-hidden border border-dashed rounded-md border-neutral-300">
+                                            class="relative h-full overflow-hidden rounded-lg shadow-inner shadow-zinc-900 bg-opacity-5">
                                         </div>
                                     </div>
                                 </div>

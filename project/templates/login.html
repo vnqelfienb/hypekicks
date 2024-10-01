@@ -3,39 +3,13 @@
         welcome back to <span class="text-primary">hypekicks</span>
     </div>
     <div class="text-md font-normal mb-14 text-center text-zinc-50">log in to your account</div>
+    <div id="login-container">
+        <c-login-partial></c-login-partial>
 
-    <form class="flex flex-col gap-6">
-        <div class="relative z-0">
-            <input type="text" id="email" name="email"
-                class="block py-2.5 px-0 w-full text-lg text-zinc-50 bg-transparent border-0 border-b-2 border-zinc-50 appearance-none focus:outline-none focus:ring-0 focus:border-primary peer"
-                placeholder=" " required />
-            <label for="email"
-                class="absolute text-md text-zinc-50 duration-300 transform -translate-y-6 scale-75 top-3 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                email
-            </label>
-        </div>
+    </div>
 
-        <div class="relative z-0">
-            <input type="password" id="password" name="password"
-                class="block py-2.5 px-0 w-full text-lg text-zinc-50 bg-transparent border-0 border-b-2 border-zinc-50 appearance-none focus:outline-none focus:ring-0 focus:border-primary peer"
-                placeholder=" " required />
-            <label for="password"
-                class="absolute text-md text-zinc-50 duration-300 transform -translate-y-6 scale-75 top-3 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-                password
-            </label>
-        </div>
 
-        <div>
-            <a class="text-sm text-secondary hover:underline" href="#">forgot your password?</a>
-        </div>
-
-        <button type="submit"
-            class="bg-transparent border border-primary w-max m-auto px-6 py-2 rounded text-primary transform delay-150 duration-300 hover:bg-primary hover:bg-opacity-15 text-sm font-bold">
-            submit
-        </button>
-    </form>
-
-    <div class="text-sm text-center mt-[1.6rem] text-zinc-50">
-        don’t have an account yet? <a class="text-sm text-secondary" href="#">sign up here!</a>
+    <div class="text-md text-center mt-[1.6rem] text-zinc-50">
+        don’t have an account yet? <a class="text-md text-accent" href="#">sign up here!</a>
     </div>
 </div>

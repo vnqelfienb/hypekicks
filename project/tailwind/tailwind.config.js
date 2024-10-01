@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["../templates/**/*.html"],
+  content: ["../templates/**/*.html", "../core/forms.py"],
   theme: {
     extend: {},
   },
@@ -9,7 +9,7 @@ module.exports = {
     require('tailwindcss-animated'),
   ],
   daisyui: {
-    themes: ['dim']
+    themes: ['dim', "cyberpunk", "lofi"]
   }
 }
 

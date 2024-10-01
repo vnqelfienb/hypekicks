@@ -8,6 +8,8 @@
     {% load static %}
     <link href="{% static 'css/main.css' %}" rel="stylesheet">
     <script defer src="{% static 'js/alpine_focus.min.js'%}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@marcreichel/alpine-typewriter/dist/alpine-typewriter.min.js"
+        defer></script>
     <script src="{% static 'js/htmx.min.js'%}">
 
 
@@ -17,7 +19,7 @@
     </script>
 </head>
 
-<body class="">
+<body>
     <img src="{% static 'images/background.webp' %}" alt=""
         class="absolute top-0 left-0 h-full w-full object-fill -z-10 blur-2xl opacity-50">
 

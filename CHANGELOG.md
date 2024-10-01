@@ -1,3 +1,13 @@
+## 0.4.0 (2024-10-01)
+
+### Feat
+
+- added footer
+
+### Fix
+
+- added login form validation and errors
+
 ## 0.3.0 (2024-09-28)
 
 ### Feat

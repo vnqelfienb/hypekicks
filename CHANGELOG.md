@@ -1,3 +1,10 @@
+## 0.4.1 (2024-10-02)
+
+### Fix
+
+- styled login page and index
+- added login form validation and errors
+
 ## 0.4.0 (2024-10-01)
 
 ### Feat

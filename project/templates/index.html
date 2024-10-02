@@ -8,8 +8,7 @@
     {% load static %}
     <link href="{% static 'css/main.css' %}" rel="stylesheet">
     <script defer src="{% static 'js/alpine_focus.min.js'%}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@marcreichel/alpine-typewriter/dist/alpine-typewriter.min.js"
-        defer></script>
+    <script defer src="{% static 'js/alpine_typew.min.js'%}"></script>
     <script src="{% static 'js/htmx.min.js'%}">
 
 
@@ -28,6 +27,7 @@
     <c-footer></c-footer>
 
 
+    <link href="{% static 'css/icons.css' %}" rel="stylesheet">
 </body>
 
 </html>

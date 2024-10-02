@@ -2,18 +2,13 @@
         slideOverOpen: false 
     }" class="relative z-50 w-auto">
     <button @click="slideOverOpen=true"
-        class="btn bg-transparent text-primary text-lg border-none hover:scale-110 transition duration-300 delay-150 bg-zinc-50 bg-opacity-5 hover:bg-zinc-50 hover:bg-opacity-15 justify-self-start"><svg
-            class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-            width="24" height="24" fill="none" viewBox="0 0 24 24">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
-        </svg>
-
+        class="btn bg-transparent text-primary text-lg border-none hover:scale-110 transition duration-300 delay-150 bg-zinc-50 bg-opacity-5 hover:bg-zinc-50 hover:bg-opacity-15 justify-self-start"><i
+            class="si-bag text-zinc-50"></i>
     </button>
     <template x-teleport="body">
         <div x-show="slideOverOpen" @keydown.window.escape="slideOverOpen=false" class="relative z-[99] bg-black">
             <div x-show="slideOverOpen" x-transition.opacity.duration.600ms @click="slideOverOpen = false"
-                class="fixed inset-0 bg-black bg-opacity-10"></div>
+                class="fixed inset-0 bg-black bg-opacity-95"></div>
             <div class="fixed inset-0 overflow-hidden">
                 <div class="absolute inset-0 overflow-hidden">
                     <div class="fixed inset-y-0 right-0 flex max-w-full pl-10">
@@ -46,7 +41,7 @@
                                 <div class="relative flex-1 px-4 mt-5 sm:px-5">
                                     <div class="absolute inset-0 px-4 sm:px-5">
                                         <div
-                                            class="relative h-full overflow-hidden rounded-lg shadow-inner shadow-zinc-900 bg-opacity-5">
+                                            class="relative h-full overflow-hidden rounded-lg shadow-lg border-2 border-primary shadow-primary bg-opacity-95">
                                         </div>
                                     </div>
                                 </div>

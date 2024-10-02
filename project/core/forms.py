@@ -6,7 +6,7 @@ class LoginForm(forms.Form):
     email = forms.EmailField(
         widget=forms.TextInput(
             attrs={
-                "class": "block py-2.5 px-0 w-full text-lg text-zinc-50 bg-transparent border-0 border-b-2 border-zinc-50 appearance-none focus:outline-none focus:ring-0 focus:border-primary peer",
+                "class": "block py-2.5 px-0 w-full text-lg text-zinc-50 bg-transparent border-0 border-b-2 border-accent appearance-none focus:outline-none focus:ring-0 focus:border-primary peer",
                 "placeholder": " ",
                 "id": "email",
                 "required": "required",
@@ -18,7 +18,7 @@ class LoginForm(forms.Form):
     password = forms.CharField(
         widget=forms.PasswordInput(
             attrs={
-                "class": "block py-2.5 px-0 w-full text-lg text-zinc-50 bg-transparent border-0 border-b-2 border-zinc-50 appearance-none focus:outline-none focus:ring-0 focus:border-primary peer",
+                "class": "block py-2.5 px-0 w-full text-lg text-zinc-50 bg-transparent border-0 border-b-2 border-accent appearance-none focus:outline-none focus:ring-0 focus:border-primary peer",
                 "placeholder": " ",
                 "id": "password",
                 "required": "required",

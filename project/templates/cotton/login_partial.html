@@ -35,12 +35,9 @@
     <c-alert-error>{{ form.non_field_errors|first }}</c-alert-error>
     {% endif %}
 
-    <div>
-        <a class="text-md text-accent hover:underline" href="#">forgot your password?</a>
-    </div>
-
+    <c-link-underline>forgot your password?</c-link-underline>
     <button type="submit"
-        class="bg-transparent border border-primary w-max m-auto px-6 py-2 rounded text-primary transform delay-150 duration-300 hover:scale-110 hover:bg-primary hover:bg-opacity-15 text-md font-bold">
+        class="bg-transparent border-2 border-primary w-max m-auto px-6 py-2 rounded text-primary transform delay-150 duration-300 hover:animate-shake hover:scale-110 hover:bg-accent hover:border-accent hover:text-accent hover:bg-opacity-15 text-md font-bold">
         submit
     </button>
 </form>

@@ -1,7 +1,7 @@
 <div x-data="{ modalOpen: false }" @keydown.escape.window="modalOpen = false"
     class="relative z-50 w-full h-auto justify-self-end">
     <button @click="modalOpen=true" type="button"
-        class="btn bg-transparent text-secondary text-lg border-none hover:scale-110 transition duration-300 delay-150 bg-zinc-50 bg-opacity-5 hover:bg-secondary hover:bg-opacity-10"
+        class="btn bg-transparent text-accent text-lg border-none hover:scale-110 transition duration-300 delay-150 bg-zinc-50 bg-opacity-5 hover:bg-accent hover:bg-opacity-25"
         hx-get="{% url 'login' %}" hx-target="#login" hx-swap="outerHTML">log
         in</button>
     <template x-teleport="body">
@@ -17,7 +17,7 @@
                 x-transition:leave="ease-in duration-200"
                 x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
                 x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                class="relative py-6 px-7 sm:max-w-lg sm:rounded-lg w-full bg-zinc-950 border border-primary bg-opacity-95 shadow-2xl shadow-stone-700">
+                class="relative py-6 px-7 sm:max-w-lg sm:rounded-lg w-full bg-zinc-950 border-2 border-accent bg-opacity-95 shadow-lg shadow-accent">
                 <div class="pb-2" id="login">
                 </div>
             </div>

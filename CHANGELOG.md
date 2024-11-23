@@ -1,3 +1,9 @@
+## 0.5.0 (2024-11-23)
+
+### Feat
+
+- added custom auth, new accounts app, converted to cbv
+
 ## 0.4.1 (2024-10-02)
 
 ### Fix

@@ -23,7 +23,12 @@
         class="absolute top-0 left-0 h-full w-full object-fill -z-10 blur-2xl opacity-50">
 
     <c-navbar></c-navbar>
-    <c-header></c-header>
+    {% if not user.is_authenticated %}
+
+    <c-hero></c-hero>
+    {% else %}
+    <h1 class="text-5xl text-center mt-12">YOU ARE LOGGED IN</h1>
+    {% endif %}
     <c-footer></c-footer>
 
 

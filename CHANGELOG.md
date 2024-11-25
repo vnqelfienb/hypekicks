@@ -1,3 +1,9 @@
+## 0.6.0 (2024-11-25)
+
+### Feat
+
+- added signup page, logout and captcha
+
 ## 0.5.0 (2024-11-23)
 
 ### Feat

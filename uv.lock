@@ -144,14 +144,27 @@ wheels = [
 ]
 
 [[package]]
+name = "django-recaptcha"
+version = "4.0.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "django" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/d4/6b/6edf89da076b2d1ea042e14f116de80be18d25b17af158038d5fc14c00bb/django-recaptcha-4.0.0.tar.gz", hash = "sha256:5316438f97700c431d65351470d1255047e3f2cd9af0f2f13592b637dad9213e", size = 22907 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/28/d7/09cefb2b4a7dc9ed8a6aabb176ea86eb904a8f73671358436e4b0aa81b93/django_recaptcha-4.0.0-py3-none-any.whl", hash = "sha256:0d912d5c7c009df4e47accd25029133d47a74342dbd2a8edc2877b6bffa971a3", size = 21915 },
+]
+
+[[package]]
 name = "hypekicks"
-version = "0.4.1"
+version = "0.5.0"
 source = { virtual = "." }
 dependencies = [
     { name = "django" },
     { name = "django-cotton" },
     { name = "django-environ" },
     { name = "django-htmx" },
+    { name = "django-recaptcha" },
     { name = "psycopg2-binary" },
 ]
 
@@ -166,6 +179,7 @@ requires-dist = [
     { name = "django-cotton", specifier = ">=1.0.9" },
     { name = "django-environ", specifier = ">=0.11.2" },
     { name = "django-htmx", specifier = ">=1.19.0" },
+    { name = "django-recaptcha", specifier = ">=4.0.0" },
     { name = "psycopg2-binary", specifier = ">=2.9.9" },
 ]
 

@@ -1,5 +1,12 @@
 from django import forms
 from django.contrib.auth import authenticate
+from django.contrib.auth.forms import ReadOnlyPasswordHashField
+from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError
+from django_recaptcha.fields import ReCaptchaField
+from django_recaptcha.widgets import ReCaptchaV2Checkbox
+
+from .models import CustomUser
 
 
 class LoginForm(forms.Form):
@@ -27,6 +34,8 @@ class LoginForm(forms.Form):
         label="password",
     )
 
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox(attrs={"data-theme": "dark"}))
+
     def authenticate_user(self):
         email = self.cleaned_data.get("email")
         password = self.cleaned_data.get("password")
@@ -35,4 +44,76 @@ class LoginForm(forms.Form):
         if user is None:
             self.add_error(None, "invalid email or password")
 
+        return user
+
+
+class SignUpForm(forms.ModelForm):
+    password = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                "class": "block py-2.5 px-0 w-full text-lg text-zinc-50 bg-transparent border-0 border-b-2 border-accent appearance-none focus:outline-none focus:ring-0 focus:border-primary peer",
+                "placeholder": " ",
+                "id": "password",
+                "required": "required",
+            }
+        ),
+        label="Password",
+    )
+    password_confirm = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                "class": "block py-2.5 px-0 w-full text-lg text-zinc-50 bg-transparent border-0 border-b-2 border-accent appearance-none focus:outline-none focus:ring-0 focus:border-primary peer",
+                "placeholder": " ",
+                "id": "password_confirm",
+                "required": "required",
+            }
+        ),
+        label="Confirm Password",
+    )
+
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox(attrs={"data-theme": "dark"}))
+
+    class Meta:
+        model = CustomUser
+        fields = [
+            "email",
+        ]
+        widgets = {
+            "email": forms.EmailInput(
+                attrs={
+                    "class": "block py-2.5 px-0 w-full text-lg text-zinc-50 bg-transparent border-0 border-b-2 border-accent appearance-none focus:outline-none focus:ring-0 focus:border-primary peer",
+                    "placeholder": " ",
+                    "id": "email",
+                    "required": "required",
+                }
+            ),
+        }
+
+    def clean_password(self):
+        password = self.cleaned_data.get("password")
+        try:
+            validate_password(password)
+        except ValidationError as e:
+            raise forms.ValidationError(list(e.messages))
+        return password
+
+    def clean_password_confirm(self):
+        password = self.cleaned_data.get("password")
+        password_confirm = self.cleaned_data.get("password_confirm")
+
+        if password and password_confirm and password != password_confirm:
+            raise forms.ValidationError("Passwords do not match.")
+        return password_confirm
+
+    def clean_email(self):
+        email = self.cleaned_data.get("email")
+        if CustomUser.objects.filter(email=email).exists():
+            raise forms.ValidationError("A user with this email already exists.")
+        return email
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.set_password(self.cleaned_data["password"])
+        if commit:
+            user.save()
         return user

@@ -1,19 +1,19 @@
 <div class="max-w-md h-max relative flex flex-col p-4 rounded-md bg-transparent bg-opacity-15">
     <div class="text-3xl font-bold mb-2 text-zinc-50 text-center">
-        welcome back to <span
+        welcome to <span
             class="text-primary transform duration-300 delay-150 ease-in hover:text-accent">hypekicks</span>
     </div>
-    <div class="text-md font-normal mb-14 text-center text-zinc-50">log in to your account</div>
-    <div id="login-container">
-        <c-login-partial></c-login-partial>
+    <div class="text-md font-normal mb-14 text-center text-zinc-50">register an account</div>
+    <div id="signup-container">
+        <c-signup-partial></c-signup-partial>
 
     </div>
 
 
-    <div class="text-md text-center mt-[1.6rem] text-zinc-50" hx-get="{% url 'signup' %}" hx-target="#auth"
+    <div class="text-md text-center mt-[1.6rem] text-zinc-50" hx-get="{% url 'login' %}" hx-target="#auth"
         hx-swap="innerHTML">
-        don’t have an account yet?
-        <c-link-underline>sign up
+        already have an account?
+        <c-link-underline>log in
             here!</c-link-underline>
 
     </div>

@@ -3,10 +3,11 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
-from django_recaptcha.fields import ReCaptchaField
-from django_recaptcha.widgets import ReCaptchaV2Checkbox
+from django_recaptcha.fields import ReCaptchaField, ReCaptchaV2Checkbox
 
 from .models import CustomUser
+
+# from django_recaptcha.widgets import
 
 
 class LoginForm(forms.Form):
@@ -34,7 +35,7 @@ class LoginForm(forms.Form):
         label="password",
     )
 
-    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox(attrs={"data-theme": "dark"}))
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
 
     def authenticate_user(self):
         email = self.cleaned_data.get("email")
@@ -71,7 +72,7 @@ class SignUpForm(forms.ModelForm):
         label="Confirm Password",
     )
 
-    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox(attrs={"data-theme": "dark"}))
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
 
     class Meta:
         model = CustomUser
@@ -112,8 +113,8 @@ class SignUpForm(forms.ModelForm):
         return email
 
     def save(self, commit=True):
-        user = super().save(commit=False)
-        user.set_password(self.cleaned_data["password"])
-        if commit:
-            user.save()
+        user = CustomUser.objects.create_user(
+            email=self.cleaned_data["email"],
+            password=self.cleaned_data["password"],
+        )
         return user

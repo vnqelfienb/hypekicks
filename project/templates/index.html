@@ -16,20 +16,22 @@
     <script src="{% static 'js/alpine.min.js' %}" defer>
 
     </script>
+
 </head>
 
 <body>
     <img src="{% static 'images/background.webp' %}" alt=""
-        class="absolute top-0 left-0 h-full w-full object-fill -z-10 blur-2xl opacity-50">
+        class="absolute top-0 left-0 h-full w-full object-fill -z-10 blur-2xl bg-opacity-20">
 
     <c-navbar></c-navbar>
     {% if not user.is_authenticated %}
-
     <c-hero></c-hero>
     {% else %}
-    <h1 class="text-5xl text-center mt-12">YOU ARE LOGGED IN</h1>
+    <c-layouts.main></c-layouts.main>
     {% endif %}
+
     <c-footer></c-footer>
+
 
 
     <link href="{% static 'css/icons.css' %}" rel="stylesheet">

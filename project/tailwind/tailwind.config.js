@@ -9,7 +9,7 @@ module.exports = {
     require('tailwindcss-animated'),
   ],
   daisyui: {
-    themes: ['dim', "cyberpunk", "lofi"]
+    themes: ['dracula', "dim"]
   }
 }
 

@@ -141,5 +141,8 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "accounts.CustomUser"
 
+LOGIN_REDIRECT_URL = "/"  # Default after login
+LOGOUT_REDIRECT_URL = "/accounts/login/"  # Where to go after logout
+
 RECAPTCHA_PUBLIC_KEY = env("RECAPTCHA_PUBLIC_KEY")
 RECAPTCHA_PRIVATE_KEY = env("RECAPTCHA_PRIVATE_KEY")

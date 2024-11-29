@@ -10,15 +10,13 @@ from .forms import LoginForm, SignUpForm
 
 
 class LoginView(FormView):
-    template_name = "login.html"  # Template for rendering the full page
-    partial_template_name = (
-        "cotton/login_partial.html"  # Template for rendering HTMX partials
-    )
+    template_name = "login.html"
+    partial_template_name = "cotton/login_partial.html"
     form_class = LoginForm
     success_url = reverse_lazy("index")
 
     def form_valid(self, form):
-        user = form.authenticate_user()  # Custom method from your LoginForm
+        user = form.authenticate_user()
         if user:
             auth_login(self.request, user)
             if self.request.htmx:
@@ -56,15 +54,17 @@ class SignUpView(FormView):
     template_name = "signup.html"
     partial_template_name = "cotton/signup_partial.html"
     form_class = SignUpForm
-    success_url = reverse_lazy("index")
+    success_url = reverse_lazy("login")
 
     def form_valid(self, form):
         user = form.save()
-        auth_login(self.request, user)
+        logout(self.request)
+
         if self.request.htmx:
             response = HttpResponse(status=200)
             response["HX-Redirect"] = self.success_url
             return response
+
         return redirect(self.success_url)
 
     def form_invalid(self, form):

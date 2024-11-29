@@ -1,29 +1,7 @@
 <div x-data="{ modalOpen: false }" @keydown.escape.window="modalOpen = false"
     class="relative z-50 w-full h-auto justify-self-end">
-    {% if not user.is_authenticated %}
-    <button @click="modalOpen=true" type="button"
-        class="btn bg-transparent text-accent text-lg border-none hover:scale-110 transition duration-300 delay-150 bg-zinc-50 bg-opacity-5 hover:bg-transparent hover:bg-opacity-25 hover:shadow-primary hover:shadow-lg hover:text-primary"
-        hx-get="{% url 'login' %}" hx-target="#auth" hx-swap="innerHTML">log
-        in</button>
-    {% else %}
-    <div class="dropdown dropdown-hover">
-        <div tabindex="0" role="button"
-            class="btn bg-transparent text-primary text-lg border-none hover:scale-110 transition duration-300 delay-150 bg-zinc-50 bg-opacity-5 hover:bg-transparent hover:bg-opacity-25 justify-self-start hover:animate-ease-in hover:shadow-accent hover:shadow-lg hover:text-accent">
-            <i class="si-user image-full"></i>
-        </div>
-        <ul tabindex="0"
-            class="dropdown-content menu w-max bg-zinc-50 animate-add mt-6 bg-opacity-5 rounded-box z-[1] p-2 shadow">
-            <li>
-                <a hx-get="" class="text-md font-bold underline text-primary">profile</a>
-            </li>
+    {{ slot }}
 
-            <li>
-                <a hx-get="{% url 'logout' %}" class="text-md underline font-bold text-secondary">logout</a>
-            </li>
-        </ul>
-    </div>
-
-    {% endif %}
     <template x-teleport="body">
         <div x-show="modalOpen" class="fixed top-0 left-0 z-[99] flex items-center justify-center w-screen h-screen"
             x-cloak>
@@ -43,4 +21,5 @@
             </div>
         </div>
     </template>
+
 </div>

@@ -1,4 +1,4 @@
-<form class="flex flex-col gap-6 animate-fade-down" hx-post="{% url 'signup' %}" hx-target="#signup-container"
+<form class="flex flex-col gap-6 animate-fade-down" hx-post="{% url 'signup' %}" hx-target="#auth-container"
     hx-swap="innerHTML">
     {% csrf_token %}
 
@@ -27,34 +27,33 @@
     </div>
 
 
-    <div class="relative z-10 w-1/2">
+    <div class="relative z-10 w-fit border-accent rounded-xl p-1 bg-zinc-50">
         {{ form.captcha }}
     </div>
 
     {% if form.email.errors %}
-    <c-alert-warning>{{ form.email.errors|first }}</c-alert-warning>
+    <c-messages.alert-warning>{{ form.email.errors|first }}</c-messages.alert-warning>
     {% endif %}
 
     {% if form.password.errors %}
-    <c-alert-warning>{{ form.password.errors|first }}</c-alert-warning>
+    <c-messages.alert-warning>{{ form.password.errors|first }}</c-messages.alert-warning>
     {% endif %}
 
     {% if form.password_confirm.errors %}
-    <c-alert-warning>{{ form.password_confirm.errors|first }}</c-alert-warning>
+    <c-messages.alert-warning>{{ form.password_confirm.errors|first }}</c-messages.alert-warning>
     {% endif %}
 
 
     {% if form.captcha.errors %}
-    <c-alert-warning>{{ form.captcha.errors|first }}</c-alert-warning>
+    <c-messages.alert-warning>{{ form.captcha.errors|first }}</c-messages.alert-warning>
     {% endif %}
 
     {% if form.non_field_errors %}
-    <c-alert-error>{{ form.non_field_errors|first }}</c-alert-error>
+    <c-messages.alert-error>{{ form.non_field_errors|first }}</c-messages.alert-error>
     {% endif %}
 
     <!-- Submit Button -->
     <button type="submit"
         class="bg-transparent border-2 border-primary w-max m-auto px-6 py-2 rounded text-primary transform delay-150 duration-300 hover:animate-shake hover:scale-110 hover:bg-accent hover:border-accent hover:text-accent hover:bg-opacity-15 text-md font-bold">
-        sign up
-    </button>
+        sign up </button>
 </form>

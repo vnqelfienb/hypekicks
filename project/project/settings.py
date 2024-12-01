@@ -140,9 +140,23 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "accounts.CustomUser"
+MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 
-LOGIN_REDIRECT_URL = "/"  # Default after login
-LOGOUT_REDIRECT_URL = "/accounts/login/"  # Where to go after logout
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/accounts/login/"
 
-RECAPTCHA_PUBLIC_KEY = env("RECAPTCHA_PUBLIC_KEY")
-RECAPTCHA_PRIVATE_KEY = env("RECAPTCHA_PRIVATE_KEY")
+# RECAPTCHA_PUBLIC_KEY = env("RECAPTCHA_PUBLIC_KEY")
+# RECAPTCHA_PRIVATE_KEY = env("RECAPTCHA_PRIVATE_KEY")
+SILENCED_SYSTEM_CHECKS = ["django_recaptcha.recaptcha_test_key_error"]
+
+# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+EMAIL_HOST = env("EMAIL_HOST")
+EMAIL_FROM = env("EMAIL_FROM")
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = env("EMAIL_PORT")
+EMAIL_USE_TLS = env("EMAIL_USE_TLS")
+
+PASSWORD_RESET_TIMEOUT = 14400

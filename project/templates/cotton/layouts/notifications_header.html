@@ -1,0 +1,16 @@
+{% if messages %}
+<div class="mx-auto bg-zinc-50 mt-12 bg-opacity-5 p-4 rounded-xl shadow-zinc-500 shadow-md w-fit">
+
+    {% for message in messages %}
+    {% if message.tags == 'success' %}
+    <c-messages.alert-success>{{ message }}</c-messages.alert-success>
+    {% elif message.tags == 'error' %}
+    <c-messages.alert-error>{{ message }}</c-messages.alert-error>
+    {% elif message.tags == 'info' %}
+    <c-messages.alert-info>{{ message }}</c-messages.alert-info>
+    {% elif message.tags == 'warning' %}
+    <c-messages.alert-warning>{{ message }}</c-messages.alert-warning>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endif %}

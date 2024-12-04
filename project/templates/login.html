@@ -1,17 +1,18 @@
 <div class="max-w-md h-max relative flex flex-col p-4 rounded-md bg-transparent bg-opacity-15">
-    <div class="text-3xl font-bold mb-2 text-zinc-50 text-center">
+    <div class="text-3xl font-bold font-fira mb-2 text-zinc-50 text-center">
         welcome back to <span
-            class="text-primary transform duration-300 delay-150 ease-in hover:text-accent">hypekicks</span>
+            class="text-primary transform font-bokor underline underline-offset-1 decoration-secondary text-4xl duration-300 delay-150 ease-in hover:text-accent">
+            hypekicks
     </div>
-    <div class="text-md font-normal mb-14 text-center text-zinc-50">log in to your account</div>
+    <div class="text-lg mb-14 text-center font-montserrat text-zinc-50">log in to your account</div>
     <div id="auth-container">
         <c-login-partial></c-login-partial>
 
     </div>
 
 
-    <div class="text-md text-center mt-[1.6rem] text-zinc-50" hx-get="{% url 'signup' %}" hx-target="#auth"
-        hx-swap="innerHTML">
+    <div class="text-md font-montserrat text-center mt-[1.6rem] text-zinc-50" hx-get="{% url 'signup' %}"
+        hx-target="#auth" hx-swap="innerHTML">
         don’t have an account yet?
         <c-link-underline>sign up
             here!</c-link-underline>

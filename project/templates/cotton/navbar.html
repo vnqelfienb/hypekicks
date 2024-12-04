@@ -1,8 +1,8 @@
 <div
-    class="navbar grid grid-cols-2 bg-zinc-50 mt-10 bg-opacity-5 w-2/3 p-4 rounded-xl shadow-zinc-500 shadow-md mx-auto">
-    <a class="btn bg-transparent text-primary text-lg border-none hover:scale-110 transition duration-300 delay-150 bg-zinc-50 bg-opacity-5 hover:bg-transparent hover:bg-opacity-25 justify-self-start hover:animate-ease-in hover:shadow-accent hover:shadow-lg hover:text-accent"
+    class="navbar grid grid-cols-2 bg-black  mt-10 bg-opacity-25 w-2/3 p-4 rounded-xl shadow-black shadow-md mx-auto animate-fade-down">
+    <a class="btn bg-transparent text-primary text-2xl border-none hover:scale-110 transition duration-300 delay-150 bg-zinc-50 bg-opacity-5 hover:bg-transparent hover:bg-opacity-25 justify-self-start hover:animate-ease-in hover:shadow-accent hover:shadow-lg hover:text-accent font-bokor"
         href="{% url 'index' %}">hypekicks</a>
-    <div class="justify-self-end gap-3">
+    <div class="justify-self-end gap-3 animate-fade-up">
         {% if user.is_authenticated %}
         <c-cart></c-cart>
         {% endif %}

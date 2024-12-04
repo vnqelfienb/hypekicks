@@ -1,5 +1,5 @@
 {% if messages %}
-<div class="mx-auto bg-zinc-50 mt-12 bg-opacity-5 p-4 rounded-xl shadow-zinc-500 shadow-md w-fit">
+<div class="mx-auto bg-black  mt-12 bg-opacity-25 p-4 rounded-xl shadow-black shadow-md w-fit">
 
     {% for message in messages %}
     {% if message.tags == 'success' %}
@@ -13,4 +13,20 @@
     {% endif %}
     {% endfor %}
 </div>
+{% else %}
+{% if user.profile.username is None and user.is_authenticated == True %}
+<div class="mx-auto bg-black  mt-12 bg-opacity-25 p-4 rounded-xl shadow-black shadow-md w-fit font-robotoCondensed">
+    <c-messages.alert_warning>please finish setting up your profile</c-messages.alert_warning>
+</div>
+{% elif user.is_authenticated == False %}
+
+{% else %}
+<div class="mx-auto bg-black  mt-12 bg-opacity-25 p-4 rounded-xl shadow-black shadow-md w-max">
+    <span class="font-fira inline-block text-xl">welcome <p class="font-fira text-accent inline-block text-xl pl-2">
+            {{ user.profile.username }}
+        </p>
+    </span>
+</div>
+
+{% endif %}
 {% endif %}

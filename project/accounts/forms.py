@@ -35,7 +35,13 @@ class LoginForm(forms.Form):
         label="password",
     )
 
-    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
+    captcha = ReCaptchaField(
+        widget=ReCaptchaV2Checkbox(
+            attrs={
+                "data-theme": "light",
+            }
+        )
+    )
 
     def authenticate_user(self):
         email = self.cleaned_data.get("email")
@@ -72,7 +78,13 @@ class SignUpForm(forms.ModelForm):
         label="Confirm Password",
     )
 
-    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
+    captcha = ReCaptchaField(
+        widget=ReCaptchaV2Checkbox(
+            attrs={
+                "data-theme": "light",
+            }
+        )
+    )
 
     class Meta:
         model = CustomUser

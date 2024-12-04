@@ -22,4 +22,4 @@ class IndexPageView(TemplateView):
                     f"Please go to your email {user.email} and activate your account",
                 )
 
-        return render(request, self.template_name)
+        return render(request, self.template_name, {user: "user"})

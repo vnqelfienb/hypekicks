@@ -1,0 +1,66 @@
+<div class="w-max">
+    <section class="font-medium items-center justify-center h-fit">
+        <section class="mx-auto w-[300px] bg-zinc-950 bg-opacity-25 rounded-2xl shadow-zinc-700 px-8 py-6 shadow-lg">
+            <!-- Profile Info -->
+            <div class="flex flex-col gap-4">
+                <!-- Creation Date and Options -->
+                <div class="flex items-end justify-between w-full">
+                    <span class="font-fira text-gray-400 text-sm inline-block">
+                        created:
+                        <p class="font-montserrat font-bold text-secondary inline-block">
+                            {{ profile.created_at|date:"M Y" }}
+                        </p>
+                    </span>
+                    <span class="text-primary self-end ml-24">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 1-2 0 1 1 0 012 0z" />
+                        </svg>
+                    </span>
+                </div>
+
+                <!-- Name -->
+                <div class="mt-8 font-bokor font-bold">
+                    <h2 class="text-primary font-bold text-4xl tracking-normal">
+                        {{ profile.first_name }} <br />
+                        {{ profile.last_name }}
+                    </h2>
+                </div>
+
+                <!-- Profile Details -->
+                <div class="inline-block mt-2">
+                    <span class="flex gap-1">
+                        {% if user.verification_status == "verified" %}
+                        <p class="text-zinc-50 font-semibold inline-block">status:</p>
+                        <p class="text-success font-semibold inline-block">verified</p>
+                        {% else %}
+                        <p class="text-zinc-50 font-semibold inline-block">status:</p>
+                        <p class="text-error font-semibold inline-block">not verified</p>
+
+                        {% endif %}
+                    </span>
+                    <span class="flex gap-1 flex-wrap">
+                        <p class="text-zinc-50 font-semibold">address:</p>
+                        <p class="text-accent font-semibold inline-block break-words">
+                            {{ profile.address }}
+                        </p>
+                    </span>
+                    <span class="flex gap-1">
+                        <p class="text-zinc-50 font-semibold inline-block">phone number:</p>
+                        <p class="text-accent font-semibold inline-block">{{ profile.phone_number }}</p>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="mt-6">
+                <button type="submit"
+                    class="bg-transparent btn-md border-2 border-primary w-max rounded-lg text-primary transform delay-150 duration-300 hover:animate-shake hover:scale-110 hover:bg-accent hover:border-accent hover:text-accent hover:bg-opacity-15 text-md font-bold"
+                    hx-get="{% url 'profile_update' %}" hx-target="#profile-container" hx-swap="innerHTML">
+                    edit info
+                </button>
+            </div>
+        </section>
+    </section>
+</div>

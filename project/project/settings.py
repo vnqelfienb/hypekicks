@@ -42,11 +42,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "six",
     "django_cotton",
     "django_htmx",
     "django_recaptcha",
     "core",
     "accounts",
+    "profiles",
 ]
 
 MIDDLEWARE = [

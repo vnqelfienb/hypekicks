@@ -1,0 +1,13 @@
+{% if profile.username is None %}
+<div class="animate-fade-left">
+    <h1 class="font-robotoCondensed text-warning text-2xl">your profile is not set up</h1>
+    <button type="submit"
+        class="bg-transparent border-2 border-primary w-max m-auto px-6 py-2 rounded text-primary transform delay-150 duration-300 hover:animate-shake hover:scale-110 hover:bg-accent hover:border-accent hover:text-accent hover:bg-opacity-15 text-md font-bold mx-10 mt-4">
+        setup profile
+    </button>
+</div>
+{% endif %}
+<div class="self-start w-full animate-fade-left">
+    <c-profiles.profile-details></c-profiles.profile-details>
+
+</div>

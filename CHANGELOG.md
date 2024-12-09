@@ -1,3 +1,9 @@
+## 0.10.0 (2024-12-09)
+
+### Feat
+
+- added cart functionality
+
 ## 0.9.0 (2024-12-09)
 
 ### Feat

@@ -1,3 +1,9 @@
+## 0.9.0 (2024-12-09)
+
+### Feat
+
+- started working on product apps
+
 ## 0.8.0 (2024-12-05)
 
 ### Feat

@@ -1,0 +1,10 @@
+<div class="max-h-[700px] overflow-y-auto scrollbar-hidden flex justify-center">
+    <ul class="bg-transparent mt-6" id="product-list">
+        {% for product in products %}
+        <li class="mb-6 animate-delay-150 animate-fade-up">
+            <c-products.product-card></c-products.product-card>
+        </li>
+        {% endfor %}
+    </ul>
+
+</div>

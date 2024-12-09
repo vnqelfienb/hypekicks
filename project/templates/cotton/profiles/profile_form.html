@@ -3,7 +3,7 @@
     {% csrf_token %}
     {% if 'username' in form.fields %}
 
-    <div class="relative z-0">
+    <div class="relative z-0 animate-fade-up">
         {{ form.username }}
         <label for="username"
             class="absolute text-md text-zinc-50 duration-300 transform -translate-y-6 scale-75 top-3 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
@@ -11,7 +11,7 @@
         </label>
     </div>
     {% endif %}
-    <div class="relative z-0">
+    <div class="relative z-0 animate-delay-150 animate-fade-up">
         {{ form.first_name }}
 
         <label for="first_name"
@@ -21,7 +21,7 @@
 
     </div>
 
-    <div class="relative z-0">
+    <div class="relative z-0 animate-delay-300 animate-fade-up">
         {{ form.last_name }}
 
         <label for="last_name"
@@ -31,7 +31,7 @@
 
     </div>
 
-    <div class="relative z-0">
+    <div class="relative z-0 animate-delay-500 animate-fade-up">
         {{ form.address }}
 
         <label for="address"
@@ -41,7 +41,7 @@
 
     </div>
 
-    <div class="relative z-0">
+    <div class="relative z-0 animate-delay-700 animate-fade-up">
         {{ form.phone_number }}
 
         <label for="phone_number"
@@ -76,7 +76,7 @@
     {% endif %}
 
     <button type="submit"
-        class="bg-transparent border-2 border-primary w-max m-auto px-6 py-2 rounded text-primary transform delay-150 duration-300 hover:animate-shake hover:scale-110 hover:bg-accent hover:border-accent hover:text-accent hover:bg-opacity-15 text-md font-bold">
+        class="bg-transparent border-2 border-primary w-max m-auto px-6 py-2 rounded text-primary transform delay-150 duration-300 hover:animate-shake hover:scale-110 hover:bg-accent hover:border-accent hover:text-accent hover:bg-opacity-15 text-md font-bold animate-delay-1000 animate-fade-up">
         update profile
     </button>
 </form>

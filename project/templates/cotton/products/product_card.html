@@ -1,0 +1,31 @@
+<article
+    class="group flex rounded-md max-w-sm flex-col overflow-hidden shadow-2xl shadow-black text-neutral-600 bg-transparent"
+    hx-get="{% url 'product_detail' product.slug %}" hx-swap="innerHTML" hx-target="#main">
+
+    <!-- Image -->
+    <div class="overflow-hidden">
+        <img src="{{ product.thumbnail.url }}"
+            class="object-cover cursor-pointer transition duration-700 ease-out group-hover:scale-105"
+            alt="{{ product.name }}" />
+    </div>
+    <!-- Content -->
+    <div class="flex flex-col gap-4 p-6">
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row gap-4 md:gap-12 justify-between">
+            <!-- Title -->
+            <div class="flex flex-col">
+                <h3 class="text-lg cursor-pointer lg:text-2xl font-thin text-primary font-bokor"
+                    aria-describedby="productDescription">
+                    {{product.name }}</h3>
+            </div>
+            <span class="text-lg whitespace-nowrap cursor-pointer font-semibold font-fira text-accent">
+                {{ product.price }} €</span>
+        </div>
+        <!-- Button -->
+        <button type="button"
+            class="flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap font-montserrat bg-transparent px-4 py-2 text-center text-md font-medium tracking-wide text-primary transition hover:bg-opacity-15 border border-primary rounded-md hover:bg-primary hover:text-secondary">
+            <i class="si-notebook"></i>
+            details
+        </button>
+    </div>
+</article>

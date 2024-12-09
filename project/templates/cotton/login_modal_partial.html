@@ -1,6 +1,15 @@
 <div x-data="{ modalOpen: false }" @keydown.escape.window="modalOpen = false"
     class="relative z-50 w-full h-auto justify-self-end">
-    {{ slot }}
+    <button @click="modalOpen = true;"
+        class="inline-flex items-center justify-center w-full px-8 py-4 text-base font-medium leading-6 text-primary bg-opacity-5 bg-zinc-50 rounded-md xl:px-10 md:w-auto hover:bg-primary transform duration-300 hover:scale-110 hover:bg-opacity-10"
+        hx-get="{% url 'login' %}" hx-target="auth" hx-swap="innerHTML">
+        Collections
+    </button>
+    <div class="" kk>
+
+    </div>
+
+
 
     <template x-teleport="body">
         <div x-show="modalOpen" class="fixed top-0 left-0 z-[99] flex items-center justify-center w-screen h-screen"

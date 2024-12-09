@@ -1,0 +1,91 @@
+<div class="self-start">
+    <a hx-get="{% url 'products' %}" hx-swap="innerHTML" hx-target="#main" class="">
+
+        <i
+            class="si-arrow-left animate-jump-in text-accent transition delay-200 duration-500 hover:text-primary hover:cursor-pointer text-3xl"></i>
+    </a>
+
+</div>
+
+<div class="bg-transparent animate-fade-left rounded-xl p-24">
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex flex-wrap -mx-4">
+            <!-- Product Images -->
+            <div class="w-full md:w-1/2 px-4 mb-8">
+                {% if product.thumbnail %}
+                <img src="{{ product.thumbnail.url }}" alt="Product"
+                    class="w-full h-auto rounded-lg animate-jump-in shadow-md mb-4" id="mainImage">
+                {% endif %}
+                <div class="flex gap-4 py-4 justify-center overflow-x-auto animate-fade-right animate-delay-300">
+                    {% for image in images %}
+                    <img src="{{ image.image.url }}" alt="Thumbnail"
+                        class="size-16 sm:size-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
+                        onclick="changeImage(this.src)">
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="w-full md:w-1/2 px-4">
+                <h2
+                    class="text-3xl text-primary font-bold font-bokor mb-2 animate-fade-left bg-gradient-to-r from-accent to-primary inline-block text-transparent bg-clip-text">
+                    {{ product.name }}</h2>
+                <div class="">
+                    <span class="text-2xl font-bold text-accent font-fira mr-2">{{ product.price }} €</span>
+                </div>
+
+                <!-- Available Sizes -->
+
+
+                <!-- Description -->
+                <div class="mt-6">
+                    <h3 class="text-lg font-semibold text-secondary font-fira mb-2 animate-fade-left animate-delay-150">
+                        Description:</h3>
+                    <p
+                        class="font-montserrat tracking-tight hover:underline transition duration-1000 delay-500 underline-offset-4 animate-delay-300 animate-fade-up">
+                        {{ product.desc }}</p>
+                </div>
+                <form method="post" action="{% url 'add_to_cart' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="product_id" value="{{ product.id }}">
+                    <div class="flex items-center justify-between gap-4 mt-16">
+                        <!-- Dropdown for Sizes -->
+                        <label class="form-control w-full max-w-xs">
+                            <div class="label">
+                                <span class="label-text font-montserrat text-secondary">Pick your size</span>
+                            </div>
+                            <select name="size_id" class="select select-bordered bg-black" required>
+                                {% for product_size in available_sizes %}
+                                <option value="{{ product_size.id }}">{{ product_size.size.size }}</option>
+                                {% endfor %}
+                            </select>
+                            <div class="label">
+                                <span class="label-text-alt font-montserrat text-secondary">Select a size to
+                                    proceed</span>
+                            </div>
+                        </label>
+
+                        <!-- Add to Cart Button -->
+                        <button
+                            class="bg-transparent flex gap-2 items-center text-secondary py-2 text-md w-2/3 rounded-md border-2 border-secondary transform duration-300 delay-150 hover:bg-secondary hover:primary hover:bg-opacity-15 text-center px-6 pr-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                            </svg>
+                            add to cart
+                        </button>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changeImage(src) {
+            document.getElementById('mainImage').src = src;
+        }
+    </script>
+</div>

@@ -1,3 +1,21 @@
+## 0.10.1 (2024-12-09)
+
+### Fix
+
+- npm package sec vuln
+
+## 0.10.0 (2024-12-09)
+
+### Feat
+
+- added cart functionality
+
+## 0.9.0 (2024-12-09)
+
+### Feat
+
+- started working on product apps
+
 ## 0.8.0 (2024-12-05)
 
 ### Feat

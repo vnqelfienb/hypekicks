@@ -1,0 +1,31 @@
+<li class="flex flex-col space-y-3 py-6 text-left sm:flex-row sm:space-x-5 sm:space-y-0">
+    <div class="shrink-0 relative animate-fade-up">
+        <span
+            class="absolute top-1 left-1 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-sm font-bold text-black shadow sm:-top-2 sm:-right-2">
+            {{ forloop.counter }}</span>
+        <img class="h-24 w-24 max-w-full rounded-lg object-cover" src="{{ item.product.thumbnail.url }}"
+            alt="{{ item.product.name }}" />
+    </div>
+
+    <div class="relative flex flex-1 flex-col justify-between">
+        <div class="sm:col-gap-5 sm:grid sm:grid-cols-2">
+            <div class="pr-8 sm:pr-5 animate-fade-right animate-delay-1000">
+                <p class="text-base font-semibold text-primary font-fira">{{ item.product.name }}</p>
+                <p class="mx-0 mt-1 mb-0 text-sm text-secondary font-fira">{{ item.size.size }}</p>
+            </div>
+
+            <div
+                class="mt-4 flex items-end justify-between sm:mt-0 sm:items-start sm:justify-end animate-fade-up animate-delay-700">
+                <p class="shrink-0 w-20 font-montserrat font-semibold text-accent sm:order-2 sm:ml-8 sm:text-right">
+                    €{{ item.product.price | floatformat:2 }}
+                </p>
+            </div>
+        </div>
+
+        <div class="absolute bottom-0 right-0 mt-4 sm:mt-0 tooltip tooltip-bottom tooltip-error" data-tip="delete">
+            <button hx-delete="{% url 'delete_cart_item' item.id %}" hx-target="#cart" hx-swap="innerHTML"
+                class="text-md text-error"><i class="si-minus"></i>
+            </button>
+        </div>
+    </div>
+</li>

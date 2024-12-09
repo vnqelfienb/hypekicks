@@ -4,7 +4,9 @@
         href="{% url 'index' %}">hypekicks</a>
     <div class="justify-self-end gap-3 animate-fade-up">
         {% if user.is_authenticated %}
-        <c-cart></c-cart>
+        <c-cart.cart>
+
+        </c-cart.cart>
         {% endif %}
         <c-login-modal></c-login-modal>
 

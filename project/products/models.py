@@ -8,12 +8,10 @@ User = settings.AUTH_USER_MODEL
 
 
 def get_image_filename(instance, filename):
-    # Ensure the instance is of type Product and has the required attribute
     if hasattr(instance, "name"):
         slug = slugify(instance.name)
         return f"sneakers/{slug}-{filename}"
     else:
-        # Fallback in case the instance is not a Product object
         return f"sneakers/default-{filename}"
 
 
@@ -113,3 +111,17 @@ class ProductImage(models.Model):
 
     def __str__(self):
         return f"{self.product.name} - Image {self.id}"
+
+
+class CartItem(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="cart_items")
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    size = models.ForeignKey(ProductSize, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+    added_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ("user", "product", "size")
+
+    def __str__(self):
+        return f"{self.user.username} - {self.product.name} ({self.size.size.size}) x {self.quantity}"

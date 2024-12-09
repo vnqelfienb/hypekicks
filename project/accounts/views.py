@@ -4,8 +4,8 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
-from django.http import HttpResponse
-from django.shortcuts import redirect, render
+from django.http import HttpResponse, JsonResponse
+from django.shortcuts import get_object_or_404, redirect, render
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 from django.utils.encoding import force_bytes, force_str
@@ -81,6 +81,21 @@ def activate_email(request, user, to_email):
             request,
             f"problem sending confirmation email to {to_email}, check if you typed it correctly.",
         )
+
+
+def resend_email(request):
+    User = get_user_model()
+    if request.headers.get("HX-Request") == "true":
+        if request.method == "POST":
+            user_id = request.POST.get("user_id")
+            to_email = request.POST.get("to_email")
+            user = get_object_or_404(User, pk=user_id)
+
+            activate_email(request, user, to_email)
+            response = HttpResponse(status=200)
+            response["HX-Redirect"] = reverse_lazy("index")
+            return response
+    return redirect(reverse_lazy("index"))
 
 
 def activate(request, uidb64, token):

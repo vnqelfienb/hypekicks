@@ -1,7 +1,4 @@
-import uuid
-
 from django.db import models
-from django.utils.text import slugify
 
 from project.settings import AUTH_USER_MODEL
 

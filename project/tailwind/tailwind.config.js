@@ -15,6 +15,17 @@ module.exports = {
   plugins: [
     require('daisyui'),
     require('tailwindcss-animated'),
+    function({ addUtilities }) {
+      addUtilities({
+        '.scrollbar-hidden': {
+          'scrollbar-width': 'none', /* Firefox */
+          '-ms-overflow-style': 'none', /* IE and Edge */
+        },
+        '.scrollbar-hidden::-webkit-scrollbar': {
+          display: 'none', /* Chrome, Safari, Opera */
+        },
+      });
+    },
   ],
   daisyui: {
     themes: ['dracula', "dim"]

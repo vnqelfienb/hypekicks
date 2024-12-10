@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    {% load static %}
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+    <img src="{% static 'images/success.webp' %}" alt=""
+        class="absolute top-0 left-0 h-full w-full object-fill -z-10 blur-xl bg-opacity-25 bg-fixed">
+
+
+    <div class="p-80 bg-transparent bg-opacity-95">
+        <section class="mx-auto py-16">
+            <div
+                class="mx-auto flex w-full flex-col items-center justify-center sm:max-w-screen-sm md:max-w-screen-md lg:flex-row">
+                <div class="text-center">
+                    <h2
+                        class="bg-clip-text text-3xl font-extrabold font-fira text-success sm:text-5xl animate-fade-down">
+                        thank you for your purchase
+                    </h2>
+                    <p
+                        class="bg-gradient-to-r animate-delay-500 from-accent via-primary to-secondary bg-clip-text font-montserrat text-4xl font-extrabold text-transparent sm:text-6xl animate-fade-up">
+                        your order has been submitted</p>
+                    <a href="{% url 'index' %}"
+                        class="mt-10 inline-flex h-12 items-center rounded-lg bg-transparent border-2 border-secondary px-6 py-3 text-xl font-bold text-secondary shadow-md transition hover:translate-y-1 hover:scale-105 hover:bg-secondary hover:bg-opacity-25 animate-jump-in animate-delay-1000">
+                        return to home
+                    </a>
+                    <p class="mt-12 text-zinc-50 text-lg font-bold font-doto">
+                        you can check it out in your profile
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+</body>
+
+</html>

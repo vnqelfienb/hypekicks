@@ -152,9 +152,14 @@ MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/accounts/login/"
 
+# RECAPTCHA
+
 # RECAPTCHA_PUBLIC_KEY = env("RECAPTCHA_PUBLIC_KEY")
 # RECAPTCHA_PRIVATE_KEY = env("RECAPTCHA_PRIVATE_KEY")
 SILENCED_SYSTEM_CHECKS = ["django_recaptcha.recaptcha_test_key_error"]
+
+
+# EMAIL
 
 # EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
@@ -167,3 +172,12 @@ EMAIL_PORT = env("EMAIL_PORT")
 EMAIL_USE_TLS = env("EMAIL_USE_TLS")
 
 PASSWORD_RESET_TIMEOUT = 14400
+
+# STRIPE
+
+BACKEND_DOMAIN = env("BACKEND_DOMAIN")
+STRIPE_PUBLISHABLE_KEY = env("STRIPE_PUBLISHABLE_KEY")
+STRIPE_SECRET_KEY = env("STRIPE_SECRET_KEY")
+
+PAYMENT_SUCCESS_URL = env("PAYMENT_SUCCESS_URL")
+PAYMENT_CANCEL_URL = env("PAYMENT_CANCEL_URL")

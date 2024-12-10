@@ -9,40 +9,30 @@
     <link href="{% static 'css/main.css' %}" rel="stylesheet">
     <script defer src="{% static 'js/alpine_focus.min.js'%}"></script>
     <script defer src="{% static 'js/alpine_typew.min.js'%}"></script>
-    <script src="{% static 'js/htmx.min.js'%}">
-
-
-    </script>
-    <script src="{% static 'js/alpine.min.js' %}" defer>
-
-    </script>
-
+    <script src="{% static 'js/htmx.min.js'%}"></script>
+    <script src="{% static 'js/alpine.min.js' %}" defer></script>
 </head>
 
-<body class="">
+<body class="min-h-screen flex flex-col">
     <img src="{% static 'images/background.webp' %}" alt=""
         class="absolute top-0 left-0 h-full w-full object-fill -z-10 blur-2xl bg-opacity-20 bg-fixed">
 
     <c-navbar></c-navbar>
+
     <c-layouts.notifications_header></c-layouts.notifications_header>
 
     {% if not user.is_authenticated %}
     <c-hero></c-hero>
     {% else %}
-    <main class="mx-12 mt-12">
+    <main class="flex-grow mx-12 mt-12">
         <c-layouts.main>
-            <div class="mb-2" hx-trigger="load" hx-get="{% url 'products' %}" hx-swap="innerHTML" hx-target="#main">
-
+            <div class="mb-2" hx-trigger="load" hx-get="{% url 'products' %}" hx-swap="this" hx-target="#main">
             </div>
-
         </c-layouts.main>
-
     </main>
     {% endif %}
 
     <c-footer></c-footer>
-
-
 
     <link href="{% static 'css/icons.css' %}" rel="stylesheet">
 </body>

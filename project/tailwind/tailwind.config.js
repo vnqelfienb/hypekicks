@@ -28,7 +28,7 @@ module.exports = {
     },
   ],
   daisyui: {
-    themes: ['dracula', "dim"]
+    themes: ['dracula', "dim", 'bumblebee']
   }
 }
 

@@ -1,18 +1,17 @@
 <div
-    class="navbar grid grid-cols-2 bg-black  mt-5 bg-opacity-25 w-2/3 p-4 rounded-xl shadow-black shadow-md mx-auto animate-fade-down">
+    class="navbar bg-black mt-5 bg-opacity-25 p-4 rounded-xl shadow-black shadow-md mx-auto w-full sm:w-3/4 md:w-2/3 lg:w-2/3 animate-fade-down">
+    <!-- Logo Link (Hypekicks) aligned to the left -->
     <a class="btn bg-transparent text-primary text-2xl border-none hover:scale-110 transition duration-300 delay-150 bg-zinc-50 bg-opacity-5 hover:bg-transparent hover:bg-opacity-25 justify-self-start hover:animate-ease-in hover:shadow-accent hover:shadow-lg hover:text-accent font-bokor"
         href="{% url 'index' %}">hypekicks</a>
-    <div class="justify-self-end gap-3 animate-fade-up">
+
+    <!-- Cart and Login Buttons aligned to the right with a gap between them -->
+    <div class="flex ml-auto gap-4 items-center">
         {% if user.is_authenticated %}
-        <c-cart.cart>
-
-        </c-cart.cart>
+        <!-- Cart Component -->
+        <c-cart.cart></c-cart.cart>
         {% endif %}
+
+        <!-- Login Modal (for non-authenticated users) -->
         <c-login-modal></c-login-modal>
-
     </div>
-
-
-
-
 </div>

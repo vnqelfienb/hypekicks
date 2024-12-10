@@ -1,11 +1,15 @@
+import stripe
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
-from django.views.generic import DeleteView, DetailView, ListView, View
+from django.views.generic import DeleteView, DetailView, ListView, TemplateView, View
 
 from .models import CartItem, Product, ProductSize
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 class ListProductsView(ListView):
@@ -33,7 +37,6 @@ class AddToCartView(LoginRequiredMixin, View):
     redirect_url = reverse_lazy("index")
 
     def post(self, request, *args, **kwargs):
-        # Extract product and size IDs from the request
         product_id = request.POST.get("product_id")
         size_id = request.POST.get("size_id")
 
@@ -105,3 +108,57 @@ class DeleteCartItemView(DeleteView):
                 self.template_partial,
                 {"cart_items": cart_items, "total_price": total_price},
             )
+
+
+class CreateStripeCheckoutSessionView(View):
+    redirect_url = reverse_lazy("index")
+
+    def post(self, request, *args, **kwargs):
+        # Fetch all items in the user's cart
+        cart_items = CartItem.objects.filter(user=request.user)
+
+        if not cart_items:
+            messages.error(request, "Your cart is empty.")
+            return redirect(self.redirect_url)
+
+        line_items = []
+        for item in cart_items:
+            product = item.product
+            line_items.append(
+                {
+                    "price_data": {
+                        "currency": "eur",
+                        "unit_amount": int(product.price * 100),
+                        "product_data": {
+                            "name": product.name,
+                            "description": product.desc,
+                            "images": [
+                                f"{settings.BACKEND_DOMAIN}/{product.thumbnail.url}"
+                            ],
+                        },
+                    },
+                    "quantity": item.quantity,
+                }
+            )
+
+        try:
+            checkout_session = stripe.checkout.Session.create(
+                payment_method_types=["card"],
+                line_items=line_items,
+                mode="payment",
+                success_url=settings.PAYMENT_SUCCESS_URL,
+                cancel_url=settings.PAYMENT_CANCEL_URL,
+            )
+            return redirect(checkout_session.url)
+
+        except Exception as e:
+            messages.error(request, f"An error occurred: {str(e)}")
+            return redirect(self.redirect_url)
+
+
+class PaymentSuccessView(TemplateView):
+    template_name = "cotton/products/payment_success.html"
+
+
+class PaymentCancelView(TemplateView):
+    template_name = "cotton/products/payment_cancel.html"

@@ -1,3 +1,9 @@
+## 0.11.0 (2024-12-11)
+
+### Feat
+
+- added stripe as a payment method
+
 ## 0.10.1 (2024-12-09)
 
 ### Fix

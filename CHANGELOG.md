@@ -1,3 +1,9 @@
+## 0.12.1 (2024-12-11)
+
+### Fix
+
+- added about us page, custom admin panel
+
 ## 0.12.0 (2024-12-11)
 
 ### Feat

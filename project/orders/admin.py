@@ -1,16 +1,17 @@
 from django.contrib import admin
+from unfold.admin import ModelAdmin
 
 from .models import Order, OrderItem
 
 
 class OrderItemInline(admin.TabularInline):
     model = OrderItem
-    extra = 0  # Removes extra blank rows
+    extra = 0
     readonly_fields = ("product", "size", "quantity", "price")
 
 
 @admin.register(Order)
-class OrderAdmin(admin.ModelAdmin):
+class OrderAdmin(ModelAdmin):
     list_display = ("id", "user", "status", "created_at")
     list_filter = ("status", "created_at")
     search_fields = ("user__username", "id")
@@ -20,7 +21,6 @@ class OrderAdmin(admin.ModelAdmin):
     actions = ["mark_as_completed", "mark_as_cancelled", "delete_orders"]
 
     def get_readonly_fields(self, request, obj=None):
-        # Make fields readonly after creation
         if obj:
             return ["user", "status", "created_at"]
         return []
@@ -39,7 +39,7 @@ class OrderAdmin(admin.ModelAdmin):
 
 
 @admin.register(OrderItem)
-class OrderItemAdmin(admin.ModelAdmin):
+class OrderItemAdmin(ModelAdmin):
     list_display = ("order", "product", "size", "quantity", "price")
     list_filter = ("product",)
     search_fields = ("product__name", "order__id")

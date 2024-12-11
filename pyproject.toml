@@ -10,6 +10,7 @@ dependencies = [
     "django-extensions>=3.2.3",
     "django-htmx>=1.19.0",
     "django-recaptcha>=4.0.0",
+    "django-unfold>=0.43.0",
     "django>=5.1.1",
     "pillow>=11.0.0",
     "psycopg2-binary>=2.9.9",

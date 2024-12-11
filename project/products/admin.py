@@ -1,9 +1,10 @@
 from django.contrib import admin
+from unfold.admin import ModelAdmin
 
 from .models import Product, ProductImage, ProductSize, ProductTag, Size
 
 
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ModelAdmin):
     list_display = ("name", "slug", "brand", "price", "status", "created_at")
     prepopulated_fields = {"slug": ("name",)}
     search_fields = ("name", "brand")
@@ -11,13 +12,13 @@ class ProductAdmin(admin.ModelAdmin):
     ordering = ("-created_at",)
 
 
-class ProductImageAdmin(admin.ModelAdmin):
+class ProductImageAdmin(ModelAdmin):
     list_display = ("product", "is_main", "created_at")
     list_filter = ("product", "is_main")
     search_fields = ("product__name",)
 
 
-class SizeAdmin(admin.ModelAdmin):
+class SizeAdmin(ModelAdmin):
     list_display = ("size", "availability")
     list_filter = ("availability",)
     search_fields = ("size",)

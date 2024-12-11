@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
+from django.template import Template
 from django.views.generic import TemplateView
 
 
@@ -22,3 +23,7 @@ class IndexPageView(TemplateView):
                 )
 
         return render(request, self.template_name, {user: "user"})
+
+
+class AboutUsPageView(TemplateView):
+    template_name = "about_us.html"

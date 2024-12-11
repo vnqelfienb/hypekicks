@@ -9,10 +9,9 @@ class IndexPageView(TemplateView):
     template_name = "index.html"
 
     def get(self, request, *args, **kwargs):
-        user = request.user  # Get the currently logged-in user
+        user = request.user
 
-        if user.is_authenticated:  # Ensure the user is logged in
-            # Check if the user has a verification_status attribute and if it's 'not_verified'
+        if user.is_authenticated:
             if (
                 hasattr(user, "verification_status")
                 and user.verification_status == "not_verified"

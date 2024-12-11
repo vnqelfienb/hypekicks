@@ -1,0 +1,34 @@
+{% for order in orders %}
+<div class="bg-black bg-opacity-25 rounded-lg border border-secondary p-4 mb-4 animate-fade-up animate-delay-300">
+    <h2 class="text-2xl font-semibold font-doto text-secondary animate-fade-down">Order #{{ order.id }}
+    </h2>
+    <p class="text-white font-fira text-lg animate-shake animate-delay-150">
+        Status:
+        {% if order.get_status_display == 'Ongoing' %}
+        <span class="text-warning font-semibold font-montserrat text-md">
+            {{ order.get_status_display | lower }}
+        </span>
+        {% elif order.get_status_display == 'Completed' %}
+        <span class="text-success font-montserrat font-semibold text-md">
+            {{ order.get_status_display | lower }}
+        </span>
+        {% endif %}
+
+    </p>
+    <p class="text-white font-fira animate-shake animate-delay-300">
+        Placed on:
+        <span class="text-secondary font-montserrat font-semibold">
+            {{ order.created_at|date:"M d, Y" }}
+        </span>
+    </p>
+    <ul class="list-item mt-2 list-inside text-gray-400 animate-jump-in animate-delay-700">
+        {% for item in order.items.all %}
+        <li class="ml-4  font-bokor text-accent text-2xl">
+            {{ item.product.name }} (x{{ item.quantity }}) - €{{item.price }}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% empty %}
+<p class="text-gray-500">No orders found for this status.</p>
+{% endfor %}

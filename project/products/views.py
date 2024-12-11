@@ -1,15 +1,21 @@
 import stripe
 from django.conf import settings
 from django.contrib import messages
+from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import DeleteView, DetailView, ListView, TemplateView, View
+from orders.models import Order, OrderItem
 
 from .models import CartItem, Product, ProductSize
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
+
+User = get_user_model()
 
 
 class ListProductsView(ListView):
@@ -148,6 +154,9 @@ class CreateStripeCheckoutSessionView(View):
                 mode="payment",
                 success_url=settings.PAYMENT_SUCCESS_URL,
                 cancel_url=settings.PAYMENT_CANCEL_URL,
+                metadata={
+                    "user_id": request.user.id,
+                },
             )
             return redirect(checkout_session.url)
 
@@ -162,3 +171,56 @@ class PaymentSuccessView(TemplateView):
 
 class PaymentCancelView(TemplateView):
     template_name = "cotton/products/payment_cancel.html"
+
+
+@method_decorator(csrf_exempt, name="dispatch")
+class StripeWebhookView(View):
+    def post(self, request, *args, **kwargs):
+        payload = request.body
+        sig_header = request.META["HTTP_STRIPE_SIGNATURE"]
+        event = None
+
+        try:
+            event = stripe.Webhook.construct_event(
+                payload, sig_header, settings.STRIPE_WEBHOOK_SECRET
+            )
+        except ValueError:
+            return JsonResponse({"error": "Invalid payload"}, status=400)
+        except stripe.error.SignatureVerificationError:
+            return JsonResponse({"error": "Invalid signature"}, status=400)
+
+        if event["type"] == "checkout.session.completed":
+            session = event["data"]["object"]
+            self.handle_checkout_session_completed(session)
+
+        return JsonResponse({"status": "success"}, status=200)
+
+    def handle_checkout_session_completed(self, session):
+        metadata = session.get("metadata", {})
+        user_id = metadata.get("user_id")
+
+        if not user_id:
+            raise ValueError("User ID is missing in the session metadata")
+
+        user = User.objects.get(id=user_id)
+        cart_items = CartItem.objects.filter(user=user)
+
+        order = Order.objects.create(user=user, status="ongoing")
+
+        for item in cart_items:
+            product = item.product
+
+            if product.quantity < item.quantity:
+                raise ValueError(f"Insufficient stock for {product.name}")
+
+            product.quantity -= item.quantity
+            product.save()
+
+            order.items.create(
+                product=item.product,
+                size=item.size,
+                quantity=item.quantity,
+                price=item.product.price,
+            )
+
+            item.delete()

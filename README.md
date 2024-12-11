@@ -68,7 +68,7 @@ touch .env
 
 ```env
 # this is a template for the env vars
-SECRET_KEY=0byq)105w658j*_9ed=!z783jmp$u4n&+*d3dbg3nlz60tga)x
+SECRET_KEY=
 
 DB_NAME=
 DB_USER=

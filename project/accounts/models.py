@@ -1,6 +1,10 @@
-from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager,
-                                        PermissionsMixin)
+from django.contrib.auth.models import (
+    AbstractBaseUser,
+    BaseUserManager,
+    PermissionsMixin,
+)
 from django.db import models
+from django.utils.timezone import now
 
 
 class CustomUserManager(BaseUserManager):
@@ -27,15 +31,15 @@ class CustomUserManager(BaseUserManager):
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-    VERIFICATION_STATUS = (
-        ("verified", "Verified"),
-        ("not_verified", "Not Verified")
-    )
+    VERIFICATION_STATUS = (("verified", "Verified"), ("not_verified", "Not Verified"))
 
     email = models.EmailField(unique=True)
-    verification_status = models.CharField(max_length=20, choices=VERIFICATION_STATUS, default="not_verified")
+    verification_status = models.CharField(
+        max_length=20, choices=VERIFICATION_STATUS, default="not_verified"
+    )
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
+    date_joined = models.DateTimeField(default=now)
 
     objects = CustomUserManager()
 

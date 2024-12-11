@@ -38,6 +38,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     "unfold",
     "unfold.contrib.filters",
+    "unfold.contrib.forms",
+    "unfold.contrib.inlines",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -186,15 +188,7 @@ PAYMENT_SUCCESS_URL = env("PAYMENT_SUCCESS_URL")
 PAYMENT_CANCEL_URL = env("PAYMENT_CANCEL_URL")
 
 
-from django.templatetags.static import static
-from django.urls import reverse_lazy
-from django.utils.translation import gettext_lazy as _
-
 UNFOLD = {
     "SITE_TITLE": "HypeKicks",
     "SITE_HEADER": "HypeKicks Administration",
-    "LOGIN": {
-        "image": lambda request: static("sample/login-bg.jpg"),
-        "redirect_after": lambda request: reverse_lazy("admin:APP_MODEL_changelist"),
-    },
 }

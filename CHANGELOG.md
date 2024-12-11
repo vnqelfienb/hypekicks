@@ -1,3 +1,9 @@
+## 0.12.2 (2024-12-11)
+
+### Fix
+
+- added date_joined to customuser
+
 ## 0.12.1 (2024-12-11)
 
 ### Fix

@@ -68,7 +68,7 @@ touch .env
 
 ```env
 # this is a template for the env vars
-SECRET_KEY=
+SECRET_KEY=0byq)105w658j*_9ed=!z783jmp$u4n&+*d3dbg3nlz60tga)x
 
 DB_NAME=
 DB_USER=
@@ -85,6 +85,15 @@ EMAIL_HOST_USER=
 EMAIL_HOST_PASSWORD=
 EMAIL_PORT=587
 EMAIL_USE_TLS=True
+
+STRIPE_PUBLISHABLE_KEY=
+STRIPE_SECRET_KEY=
+STRIPE_WEBHOOK_SECRET=
+
+PAYMENT_SUCCESS_URL=http://127.0.0.1:8000/products/payment-success/
+PAYMENT_CANCEL_URL=http://127.0.0.1:8000/products/payment-cancel/
+BACKEND_DOMAIN=http://127.0.0.1:8000
+
 
 # they can be tweaked in settings.py accordingly
 ```

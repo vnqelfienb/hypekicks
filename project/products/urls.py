@@ -26,8 +26,8 @@ urlpatterns = [
         CreateStripeCheckoutSessionView.as_view(),
         name="create_checkout_session",
     ),
-    path("webhooks/stripe/", StripeWebhookView.as_view(), name="stripe-webhook"),
-    path("payment-success/", PaymentSuccessView.as_view(), name="payment_success"),
-    path("payment-cancel/", PaymentCancelView.as_view(), name="payment_cancel"),
-    path("<slug:slug>/", ProductDetailsView.as_view(), name="product_detail"),
+    # path("webhooks/stripe/", StripeWebhookView.as_view(), name="stripe-webhook"),
+    # path("payment-success/", PaymentSuccessView.as_view(), name="payment_success"),
+    # path("payment-cancel/", PaymentCancelView.as_view(), name="payment_cancel"),
+    # path("<slug:slug>/", ProductDetailsView.as_view(), name="product_detail"),
 ]

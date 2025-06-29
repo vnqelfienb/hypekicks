@@ -92,16 +92,16 @@ WSGI_APPLICATION = "project.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": env("DB_NAME"),
-        "USER": env("DB_USER"),
-        "PASSWORD": env("DB_PASS"),
-        "HOST": env("DB_HOST"),
-        "PORT": env("DB_PORT"),
-    }
-}
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": env("DB_NAME"),
+#         "USER": env("DB_USER"),
+#         "PASSWORD": env("DB_PASS"),
+#         "HOST": env("DB_HOST"),
+#         "PORT": env("DB_PORT"),
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -166,23 +166,23 @@ SILENCED_SYSTEM_CHECKS = ["django_recaptcha.recaptcha_test_key_error"]
 # EMAIL
 
 # EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-
-EMAIL_HOST = env("EMAIL_HOST")
-EMAIL_FROM = env("EMAIL_FROM")
-EMAIL_HOST_USER = env("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
-EMAIL_PORT = env("EMAIL_PORT")
-EMAIL_USE_TLS = env("EMAIL_USE_TLS")
-
-PASSWORD_RESET_TIMEOUT = 14400
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+#
+# EMAIL_HOST = env("EMAIL_HOST")
+# EMAIL_FROM = env("EMAIL_FROM")
+# EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+# EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+# EMAIL_PORT = env("EMAIL_PORT")
+# EMAIL_USE_TLS = env("EMAIL_USE_TLS")
+#
+# PASSWORD_RESET_TIMEOUT = 14400
 
 # STRIPE
 
-BACKEND_DOMAIN = env("BACKEND_DOMAIN")
-STRIPE_PUBLISHABLE_KEY = env("STRIPE_PUBLISHABLE_KEY")
-STRIPE_SECRET_KEY = env("STRIPE_SECRET_KEY")
-STRIPE_WEBHOOK_SECRET = env("STRIPE_WEBHOOK_SECRET")
+# BACKEND_DOMAIN = env("BACKEND_DOMAIN")
+# STRIPE_PUBLISHABLE_KEY = env("STRIPE_PUBLISHABLE_KEY")
+# STRIPE_SECRET_KEY = env("STRIPE_SECRET_KEY")
+# STRIPE_WEBHOOK_SECRET = env("STRIPE_WEBHOOK_SECRET")
 
 PAYMENT_SUCCESS_URL = env("PAYMENT_SUCCESS_URL")
 PAYMENT_CANCEL_URL = env("PAYMENT_CANCEL_URL")

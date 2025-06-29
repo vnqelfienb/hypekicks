@@ -13,7 +13,7 @@ from orders.models import Order, OrderItem
 
 from .models import CartItem, Product, ProductSize
 
-stripe.api_key = settings.STRIPE_SECRET_KEY
+# stripe.api_key = settings.STRIPE_SECRET_KEY
 
 User = get_user_model()
 

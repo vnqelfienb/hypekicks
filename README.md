@@ -1,9 +1,8 @@
 # hypekicks
 
 ## Project Information
-This is my submission for the SoftUni Django Advanced Exam.
 HypeKicks is a e-commerce website for luxury sneakers.
-My intention for the exam was to create a website that mimics a 'real world' example rather than something unique and original.
+My intention was to create a website that mimics a 'real world' example rather than something unique and original.
 
 ## Project Stack
 ### Frontend

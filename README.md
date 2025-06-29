@@ -1,4 +1,8 @@
 # hypekicks
+<img alt="alt_text" width="1080" src="https://github.com/vnqelfienb/hypekicks/blob/main/screenshots/homepage.png" />
+<img alt="alt_text" width="1080" src="https://github.com/vnqelfienb/hypekicks/blob/main/screenshots/signup.png" />
+<img alt="alt_text" width="1080" src="https://github.com/vnqelfienb/hypekicks/blob/main/screenshots/learnmore.png" />
+
 
 ## Project Information
 HypeKicks is a e-commerce website for luxury sneakers.
